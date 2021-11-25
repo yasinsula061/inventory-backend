@@ -1,4 +1,4 @@
-package com.sula.inventory.payload.response;
+package com.sula.inventory.security.jwt.payload.response;
 
 import java.util.List;
 

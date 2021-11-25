@@ -26,9 +26,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends BaseModel {
-
-    @JoinColumn(name = "PERSON_ID", nullable = false)
-    @OneToOne(optional = false)
+    @JoinColumn(name = "PERSON_ID")
+    @OneToOne(optional = true)
     private Person person;
 
     @NotBlank

@@ -1,4 +1,4 @@
-package com.sula.inventory.payload.request;
+package com.sula.inventory.security.jwt.payload.request;
 
 import lombok.Data;
 

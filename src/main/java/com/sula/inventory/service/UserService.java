@@ -24,6 +24,61 @@ public class UserService extends BaseService {
     @Autowired
     UserSpec userSpec;
 
+    public Map<String, Object> addUser(User user) {
+        Map<String, Object> result = new HashMap<>();
+        List<User> list = userDAO.findAll(userSpec.findByIdAndPersonOrUser(user));
+        if (list == null || list.size() < 1) {
+            String password = genPassword();
+            user.setPassword(encPassword(password));
+            userDAO.saveAndFlush(user);
+            result.put("success", true);
+        } else {
+            result.put("success", false);
+        }
+
+        return result;
+    }
+
+    public Map<String, Object> editUser(User user) {
+        Map<String, Object> result = new HashMap<>();
+        User oldUser = userDAO.findById(user.getId()).get();
+        List<User> list = userDAO.findAll(userSpec.findByIdAndPersonOrUser(user));
+        if (oldUser != null && list == null || list.size() < 1) {
+            user.setPassword(oldUser.getPassword());
+            userDAO.saveAndFlush(user);
+            result.put("success", true);
+        } else {
+            result.put("success", false);
+        }
+        return result;
+    }
+
+    public Map<String, Object> deleteUser(User user) {
+        Map<String, Object> result = new HashMap<>();
+        User oldUser = userDAO.findById(user.getId()).get();
+        if (oldUser != null) {
+            userDAO.deleteById(user.getId());
+            result.put("success", true);
+        } else {
+            result.put("success", false);
+        }
+        return result;
+    }
+
+    public Map<String, Object> resetPassword(User user) {
+        Map<String, Object> result = new HashMap<>();
+        user = userDAO.findById(user.getId()).get();
+        if (user != null) {
+            String password = genPassword();
+            user.setPassword(encPassword(password));
+            userDAO.saveAndFlush(user);
+            result.put("success", true);
+        } else {
+            result.put("success", false);
+        }
+        return result;
+    }
+
 
     public Map<String, Object> getUserList(User user) {
         Map<String, Object> result = new HashMap<>();

@@ -23,24 +23,24 @@ public abstract class BaseModel implements Serializable {
     private Long id;
 
     @Size(max = 12)
-    @Column(name = "ACTIVE", nullable = false)
+    @Column(name = "ACTIVE", nullable = true)
     private boolean isActive = true;
 
     @Size(max = 12)
-    @Column(name = "DELETED", nullable = false)
+    @Column(name = "DELETED", nullable = true)
     private boolean isDeleted = false;
 
     @Size(max = 12)
-    @Column(name = "LOCKED", nullable = false)
+    @Column(name = "LOCKED", nullable = true)
     private boolean isLocked = false;
 
 
     @Size(max = 120)
-    @Column(name = "DATA_CHANGE_CREATED_BY", nullable = false)
+    @Column(name = "DATA_CHANGE_CREATED_BY", nullable = true)
     private String dataChangeCreatedBy;
 
     @Size(max = 120)
-    @Column(name = "DATA_CHANGE_CREATED_TIME", nullable = false)
+    @Column(name = "DATA_CHANGE_CREATED_TIME", nullable = true)
     private Date dataChangeCreatedTime;
 
     @Size(max = 120)
