@@ -20,7 +20,7 @@ public class Application extends SpringBootServletInitializer {
     public static void main(String[] args) throws Exception {
 
         logger.info("Spring Versiyon : " + SpringVersion.getVersion());
-        logger.info("inventory Starting ...");
+        logger.info("inventory Application Starting ..");
         SpringApplication.run(Application.class, args);
     }
 }
